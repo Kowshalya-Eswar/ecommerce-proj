@@ -9,6 +9,12 @@ import { useState } from 'react';
 function NavBar() {
   const cartProducts = useSelector(state =>state.cart)
   const {search,setSearch} = useState('');
+
+  useEffect(()=>{
+            const FilteredResults = products.filter((product)=>
+            ((product.title).toLowerCase()).includes(search.toLowerCase()))
+            setSearchResults(FilteredResults)
+        },[search,products])
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
     <Container fluid>

@@ -14,5 +14,18 @@ const cartSlice = createSlice({
 }}
 );
 
-export const {add,remove} = cartSlice.actions;
+const productData = createSlice({
+   name:'productData',
+   initialState,
+   reducers:{
+      productInitiate(state,action){
+         state.push(action.payload)
+      },
+      productFilter(state,action){
+         return state.filter((product)=>((product.title).toLowerCase()).includes(action.payload.toLowerCase()))
+      }
+   }
+});
+
+export const {add,remove,productInitiate,productFilter} = cartSlice.actions;
 export default cartSlice.reducer;
